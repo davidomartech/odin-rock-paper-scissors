@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   // get number between 1 and 3
   let x = Math.floor(Math.random() * 3) + 1;
@@ -9,4 +12,8 @@ function getComputerChoice() {
     case 3:
       return "scissors";
   }
+}
+
+function getHumanChoice() {
+  return prompt("Choose: rock,paper,scissors");
 }

@@ -18,6 +18,8 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 const gameBtns = document.querySelector(".game-btns");
+const humanScoreElement = document.querySelector(".human-score");
+const computerScoreElement = document.querySelector(".computer-score");
 
 gameBtns.addEventListener("click", (e) => {
   switch (e.target.textContent) {
@@ -53,5 +55,13 @@ function playRound(humanChoice, computerChoice) {
     case "paper":
       if (computerChoice === "rock") humanWon = true;
       break;
+  }
+
+  if (humanWon) {
+    humanScore++;
+    humanScoreElement.textContent = `You: ${humanScore}`;
+  } else {
+    computerScore++;
+    computerScoreElement.textContent = `Computer: ${computerScore}`;
   }
 }

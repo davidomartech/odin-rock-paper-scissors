@@ -20,6 +20,7 @@ let computerScore = 0;
 const gameBtns = document.querySelector(".game-btns");
 const humanScoreElement = document.querySelector(".human-score");
 const computerScoreElement = document.querySelector(".computer-score");
+const roundOutputElement = document.querySelector(".round-output");
 
 gameBtns.addEventListener("click", (e) => {
   switch (e.target.textContent) {
@@ -36,9 +37,9 @@ gameBtns.addEventListener("click", (e) => {
 });
 
 function playRound(humanChoice, computerChoice) {
-  humanChoice = humanChoice.toLowerCase();
   if (humanChoice === computerChoice) {
-    return "Tie!";
+    roundOutputElement.textContent = "Tie!";
+    return;
   }
 
   const winningOutput = `Victory! ${humanChoice} beats ${computerChoice}.`;
@@ -59,9 +60,11 @@ function playRound(humanChoice, computerChoice) {
 
   if (humanWon) {
     humanScore++;
+    roundOutputElement.textContent = winningOutput;
     humanScoreElement.textContent = `You: ${humanScore}`;
   } else {
     computerScore++;
+    roundOutputElement.textContent = losingOutput;
     computerScoreElement.textContent = `Computer: ${computerScore}`;
   }
 }
